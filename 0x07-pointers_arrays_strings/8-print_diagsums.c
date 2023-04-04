@@ -17,7 +17,7 @@ sum0 = sum0 + a[i * size + i];
 }
 for (j = 0; j < size ; j++)
 {
-sum1 = sum1 + a[j * size + (size - j -1)];
+sum1 = sum1 + a[j * size + (size - j - 1)];
 }
 printf("%d, %d\n", sum0, sum1);
 }
