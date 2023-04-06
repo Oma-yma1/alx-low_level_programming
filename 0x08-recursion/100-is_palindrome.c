@@ -24,7 +24,7 @@ return (0);
 return (1 + _strlen_recursion(s + 1));
 }
 /**
- * compar - compare characters 
+ * compar - compare characters
  * @s: string
  * @j: iterator
  * @len: lenght of string
