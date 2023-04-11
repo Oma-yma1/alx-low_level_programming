@@ -14,7 +14,7 @@ if (str == NULL)
 return (NULL);
 while (str[l] != '\0')
 l++;
-c = (char *)malloc(sizeof(char) * (l+1));
+c = (char *)malloc(sizeof(char) * (l + 1));
 if (c == NULL)
 return (NULL);
 for (j = 0; j < l; j++)
