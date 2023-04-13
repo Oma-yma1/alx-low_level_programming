@@ -10,10 +10,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 char *s;
 unsigned int i = 0, j = 0, k = 0;
-for (i = 0; s1[i]; i++)
-;
-for (j = 0; s2[j]; j++)
-;
+for (i = 0; s1[i]; ++i)
+for (j = 0; s2[j]; ++j)
 if (j >= n)
 s = malloc(sizeof(char) * (i + j + 1));
 if (s == NULL)
