@@ -8,7 +8,7 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-char *pt = ptr;
+char *pt;
 char *ptr1;
 unsigned int j;
 if (new_size == old_size)
@@ -25,6 +25,7 @@ return (malloc(new_size));
 ptr1 = malloc(new_size);
 if (ptr1 == NULL)
 return (NULL);
+pt = ptr;
 if (new_size > old_size)
 for (j = 0; j < old_size; j++)
 ptr1[j] = pt[j];
