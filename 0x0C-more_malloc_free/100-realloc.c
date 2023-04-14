@@ -21,10 +21,7 @@ free(ptr);
 return (NULL);
 }
 else if (ptr == NULL)
-{
-ptr1 = malloc(new_size);
-return (ptr1);
-}
+return (malloc(new_size));
 ptr1 = malloc(new_size);
 if (ptr1 == NULL)
 return (NULL);
