@@ -15,13 +15,16 @@ if (new_size == old_size)
 {
 return (ptr);
 }
-if (new_size == 0 && ptr)
+else if (new_size == 0 && ptr)
 {
 free(ptr);
 return (NULL);
 }
-if (ptr == NULL)
-return (malloc(new_size));
+else if (ptr == NULL)
+{
+ptr1 = malloc(new_size);
+return (ptr1);
+}
 ptr1 = malloc(new_size);
 if (ptr1 == NULL)
 return (NULL);
