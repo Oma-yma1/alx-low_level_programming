@@ -24,7 +24,7 @@ exit(2);
 array = (char *)main;
 for (i = 0; i < b; i++)
 {
-printf("%02hhx", array[i]);
+printf("%.2hhx", array[i]);
 if (i < b - 1)
 printf(" ");
 }
