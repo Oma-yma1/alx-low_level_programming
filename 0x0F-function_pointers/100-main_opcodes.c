@@ -21,7 +21,7 @@ if (b < 0)
 printf("Error\n");
 exit(2);
 }
-array = (char*)main;
+array = (char *)main;
 for (i = 0; i < b; i++)
 {
 printf("%02hhx", array[i]);
