@@ -6,7 +6,7 @@
  * @argc: num of argument
  * Return: 0 success
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 int b, i;
 char *array;
@@ -29,4 +29,5 @@ if (i < b - 1)
 printf(" ");
 }
 printf("\n");
+return (0);
 }
