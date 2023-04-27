@@ -12,9 +12,9 @@ size_t n = 0;
 for (; h != NULL; h = h->next)
 {
 if (h->str == NULL)
-printf("[0](nil)\n");
+printf("[0] (nil)\n");
 else
-printf("[%u] %s\n",h->len, h->str);
+printf("[%u] %s\n", h->len, h->str);
 n++;
 }
 return (n);
