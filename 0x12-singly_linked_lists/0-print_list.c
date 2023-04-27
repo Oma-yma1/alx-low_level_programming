@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stddef.h>
 /**
  * print_list - function that prints all the elements of a list_t list
  * @h: pointer
@@ -13,7 +14,7 @@ for (; h != NULL; h = h->next)
 if (h->str == NULL)
 printf("[0](nil)\n");
 else
-printf("[%u] %s\n", h->len, h->str);
+printf("[%u] %s\n",h->len, h->str);
 n++;
 }
 return (n);
