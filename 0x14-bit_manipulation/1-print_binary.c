@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * void print_binary - prints thebinary of a number
+ * print_binary - prints thebinary of a number
  * @n: an unsigned long int
  */
 void print_binary(unsigned long int n)
