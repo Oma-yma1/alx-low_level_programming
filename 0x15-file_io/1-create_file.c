@@ -14,7 +14,7 @@ return (-1);
 fi = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
 if (fi == -1)
 return (-1);
-if (text_content == NULL)
+if (text_content != NULL)
 for (le = 0; text_content[le]; le++)
 wi = write(fi, text_content, le);
 if (wi == -1)
