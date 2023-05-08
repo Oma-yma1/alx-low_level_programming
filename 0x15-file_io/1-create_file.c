@@ -9,14 +9,16 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-size_t le = strlen(text_content);
+size_t text_le;
 int fi, wi;
 if (filename == NULL)
 return (-1);
 fi = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
 if (fi == -1)
 return (-1);
-wi = write(fi, text_content, le);
+if (text_content != NULL)
+text_le = strlen(text_content);
+wi = write(fi, text_content, text_le);
 if (wi == -1)
 return (-1);
 close(fi);
