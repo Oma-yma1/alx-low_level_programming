@@ -11,7 +11,7 @@ void fi_closing(int fc);
 char *buff_creat(char *fi)
 {
 char *buff;
-buff = malloc(sizeof(char) *1024);
+buff = malloc(sizeof(char) * 1024);
 if (buff == NULL)
 {
 dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fi);
@@ -21,7 +21,7 @@ return (buff);
 }
 /**
  * fi_closing - close file
- * @fi1
+ * @fd: file
  */
 void fi_closing(int fd)
 {
@@ -51,7 +51,7 @@ buff = buff_creat(argv[2]);
 file_from = open(argv[1], O_RDONLY);
 re = read(file_from, buff, 1024);
 file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-do{
+do {
 if (file_from == -1 || re == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
@@ -67,7 +67,7 @@ exit(99);
 }
 re = read(file_from, buff, 1024);
 file_to = open(argv[2], O_WRONLY | O_APPEND);
-}while (re > 0);
+} while (re > 0);
 free(buff);
 fi_closing(file_from);
 fi_closing(file_to);
