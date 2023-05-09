@@ -2,19 +2,19 @@
 #include <stdio.h>
 #include <fcntl.h>
 char *buff_creat(char *fi);
-void fi_closing(int fc);
+void fi_closing(int fd);
 /**
  * buff_creat - creat buffer
- * @fi: file
+ * @file: file
  * Return: buffer
  */
-char *buff_creat(char *fi)
+char *buff_creat(char *file)
 {
 char *buff;
 buff = malloc(sizeof(char) * 1024);
 if (buff == NULL)
 {
-dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fi);
+dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 exit(99);
 }
 return (buff);
@@ -25,7 +25,9 @@ return (buff);
  */
 void fi_closing(int fd)
 {
-if (close(fd) == -1)
+int d;
+d = close(fd);
+if (d == -1)
 {
 dprintf(STDERR_FILENO, "Error/ Can't close fd %d\n", fd);
 exit(100);
