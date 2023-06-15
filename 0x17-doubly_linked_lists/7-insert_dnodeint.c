@@ -17,7 +17,7 @@ if (node_new == NULL)
 return (NULL);
 node_new->n = n;
 tmp = *h;
-while (tmp && j > idx)
+while (tmp && j < idx)
 {
 tmp = tmp->next;
 j++;
