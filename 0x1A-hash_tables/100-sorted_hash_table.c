@@ -110,7 +110,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 unsigned long int ind = key_index((unsigned char *)key, ht->size);
 shash_node_t *nd = ht->array[ind];
-if (ht == NULL || key == NULL)
+if (ht == NULL || key == NULL || *key == '\0')
 return (NULL);
 while (nd != NULL)
 {
