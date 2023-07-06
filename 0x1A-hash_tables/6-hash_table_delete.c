@@ -5,17 +5,19 @@
  */
 void hash_table_delete(hash_table_t *ht)
 {
-hash_node_t *nod;
+hash_node_t *node;
 unsigned long int j;
+if (ht == NULL)
+return;
 while (j < ht->size)
 {
 while (ht->array[j] != NULL)
 {
-nod = ht->array[j]->next;
+node = ht->array[j]->next;
 free(ht->array[j]->key);
 free(ht->array[j]->value);
 free(ht->array[j]);
-ht->array[j] = nod;
+ht->array[j] = node;
 }
 j++;
 }
