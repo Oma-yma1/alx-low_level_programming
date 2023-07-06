@@ -30,50 +30,73 @@ return (ht);
 */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-unsigned long int ind = key_index((unsigned char *)key, ht->size);
-shash_node_t *nd = ht->array[ind];
-shash_node_t *nw = NULL;
-if (ht == NULL || key == NULL || value == NULL)
+shash_node_t *new, *tmp;
+char *value_copy;
+unsigned long int index;
+
+if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 return (0);
-while (nd != NULL)
+
+value_copy = strdup(value);
+if (value_copy == NULL)
+return (0);
+
+index = key_index((const unsigned char *)key, ht->size);
+tmp = ht->shead;
+while (tmp)
 {
-if (strcmp(nd->key, key) == 0)
+if (strcmp(tmp->key, key) == 0)
 {
-free(nd->value);
-nd->value = strdup(value);
+free(tmp->value);
+tmp->value = value_copy;
 return (1);
 }
-nd = nd->next;
+tmp = tmp->snext;
 }
-nw = malloc(sizeof(shash_node_t));
-if (nw == NULL)
+
+new = malloc(sizeof(shash_node_t));
+if (new == NULL)
+{
+free(value_copy);
 return (0);
-nw->key = strdup(key);
-nw->value = strdup(value);
-nw->next = ht->array[ind];
-ht->array[ind] = nw;
-if (ht->shead == NULL || strcmp(nw->key, ht->shead->key) < 0)
+}
+new->key = strdup(key);
+if (new->key == NULL)
 {
-nw->sprev = NULL;
-nw->snext = ht->shead;
-if (ht->shead != NULL)
-ht->shead->sprev = nw;
-else
-ht->stail = nw;
-ht->shead = nw;
+free(value_copy);
+free(new);
+return (0);
+}
+new->value = value_copy;
+new->next = ht->array[index];
+ht->array[index] = new;
+
+if (ht->shead == NULL)
+{
+new->sprev = NULL;
+new->snext = NULL;
+ht->shead = new;
+ht->stail = new;
+}
+else if (strcmp(ht->shead->key, key) > 0)
+{
+new->sprev = NULL;
+new->snext = ht->shead;
+ht->shead->sprev = new;
+ht->shead = new;
 }
 else
 {
-nd = ht->shead;
-while (nd->next != NULL && strcmp(nw->key, nd->snext->key) > 0)
-nd = nd->snext;
-nw->sprev = nd;
-nw->snext = nd->snext;
-if (nd->snext != NULL)
-nd->snext->sprev = nw;
+tmp = ht->shead;
+while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0)
+tmp = tmp->snext;
+new->sprev = tmp;
+new->snext = tmp->snext;
+if (tmp->snext == NULL)
+ht->stail = new;
 else
-ht->stail = nw;
-nd->snext = nw;
+tmp->snext->sprev = new;
+tmp->snext = new;
 }
 return (1);
 }
