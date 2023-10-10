@@ -1,6 +1,6 @@
 #include "search_algos.h"
 /**
-* binary_search_helper - searches  function
+* binary_searchh - searches  function
 * @array: array
 * @left: left boun
 * @right: right boun
