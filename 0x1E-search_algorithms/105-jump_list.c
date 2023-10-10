@@ -16,29 +16,28 @@ if (list == NULL || size == 0)
 return (NULL);
 
 j = (size_t)sqrt((double)size);
-ind = 0;
+index = 0;
 i = 0;
 
 do {
-prev = list;
+prv = list;
 i++;
-ind = i *j;
-
-while (list->next && list->ind < ind)
+index = i *j;
+while (list->next && list->index < index)
 list = list->next;
 
-if (list->next == NULL && ind != list->ind)
-ind = list->ind;
+if (list->next == NULL && index != list->index)
+index = list->index;
 
-printf("Value checked at index [%d] = [%d]\n", (int)ind, list->n);
+printf("Value checked at index [%d] = [%d]\n", (int)index, list->n);
 
-} while (ind < size && list->next && list->n < value);
+} while (index < size && list->next && list->n < value);
 
 printf("Value found between indexes ");
-printf("[%d] and [%d]\n", (int)prv->index, (int)list->ind);
-for (; prv && prv->ind <= list->ind; prv = prv->next)
+printf("[%d] and [%d]\n", (int)prv->index, (int)list->index);
+for (; prv && prv->index <= list->index; prv = prv->next)
 {
-printf("Value checked at index [%d] = [%d]\n", (int)prv->ind, prv->n);
+printf("Value checked at index [%d] = [%d]\n", (int)prv->index, prv->n);
 if (prv->n == value)
 return (prv);
 }
